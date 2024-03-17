@@ -25,7 +25,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "automovil")
 public class Automovil implements Serializable {
-
+//prueba
     @Id
     @Column(name = "idAutomovil")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
