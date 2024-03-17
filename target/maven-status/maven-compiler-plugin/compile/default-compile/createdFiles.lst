@@ -1,5 +1,8 @@
 Dominio\TipoLicencia.class
 Dominio\Persona.class
+Persistencia\PersonaDAO.class
 Dominio\Automovil.class
-Dominio\Licencia.class
 Dominio\Placa.class
+Excepciones\PersistenciaException.class
+IPersistencia\IPersonaDao.class
+Dominio\Licencia.class
