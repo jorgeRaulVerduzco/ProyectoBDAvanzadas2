@@ -7,13 +7,19 @@ package Dominio;
 import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -21,52 +27,33 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "Licencia")
-public class Licencia implements Serializable {
+@DiscriminatorValue(value = "licencia")
+@PrimaryKeyJoinColumn(name = "idLicencia")
+public class Licencia extends Tramite implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idLicencia;
+    @Column(name = "añosVigencia", nullable = false)
+    private int añosVigencia;
 
-    @Column(name = "vigencia", nullable = false)
-    private int vigencia;
-
-    @Column(name = "tipoLicencia", nullable = false)
+    @Column(name = "TipoLicencia", nullable = false)
+    @Enumerated(EnumType.STRING)
     private TipoLicencia tipoLicencia;
 
-    @Column(name = "FechaExpedicion", nullable = false)
-    Calendar fechaExpedicion;
-
-    @Column(name = "costo", nullable = false)
-    float costo;
-    @ManyToOne
-    @JoinColumn(name = "idPersona")
-    private Persona persona;
-
     public Licencia() {
+
     }
 
-    public Licencia(int vigencia, TipoLicencia tipoLicencia, Calendar fechaExpedicion, float costo, Persona persona) {
-        this.vigencia = vigencia;
+    public Licencia(int añosVigencia, TipoLicencia tipoLicencia, float costo, Calendar fechaTramite, Persona persona, Calendar fechaVigencia) {
+        super(costo, fechaTramite, persona, fechaVigencia);
+        this.añosVigencia = añosVigencia;
         this.tipoLicencia = tipoLicencia;
-        this.fechaExpedicion = fechaExpedicion;
-        this.costo = costo;
-        this.persona = persona;
     }
 
-    public Long getIdLicencia() {
-        return idLicencia;
+    public int getAñosVigencia() {
+        return añosVigencia;
     }
 
-    public void setIdLicencia(Long idLicencia) {
-        this.idLicencia = idLicencia;
-    }
-
-    public int getVigencia() {
-        return vigencia;
-    }
-
-    public void setVigencia(int vigencia) {
-        this.vigencia = vigencia;
+    public void setAñosVigencia(int añosVigencia) {
+        this.añosVigencia = añosVigencia;
     }
 
     public TipoLicencia getTipoLicencia() {
@@ -77,36 +64,33 @@ public class Licencia implements Serializable {
         this.tipoLicencia = tipoLicencia;
     }
 
-    public Calendar getFechaExpedicion() {
-        return fechaExpedicion;
-    }
-
-    public void setFechaExpedicion(Calendar fechaExpedicion) {
-        this.fechaExpedicion = fechaExpedicion;
-    }
-
+    @Override
     public float getCosto() {
         return costo;
     }
 
+    @Override
     public void setCosto(float costo) {
         this.costo = costo;
     }
 
-    public Persona getPersona() {
-        return persona;
+    @Override
+    public Calendar getFechaTramite() {
+        return fechaTramite;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setFechaTramite(Calendar fechaTramite) {
+        this.fechaTramite = fechaTramite;
     }
 
     @Override
     public String toString() {
-        return "Licencia{" + "idLicencia=" + idLicencia + ", vigencia=" + vigencia + ", tipoLicencia=" + tipoLicencia + ", fechaExpedicion=" + fechaExpedicion + ", costo=" + costo + ", persona=" + persona + '}';
+        return "Licencia{"
+                + "añosVigencia=" + añosVigencia
+                + ", tipoLicencia=" + tipoLicencia
+                + ", costo=" + costo
+                + ", fechaTramite=" + fechaTramite.getTime()
+                + ", fechaVigencia=" + fechaVigencia.getTime()
+                + '}';
     }
-    
-    
-    
-
 }

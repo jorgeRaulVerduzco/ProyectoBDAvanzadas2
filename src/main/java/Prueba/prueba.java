@@ -19,9 +19,9 @@ public class prueba {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         PersonaDAO DAO = new PersonaDAO();
- Persona persona = new Persona();
+        Persona persona = new Persona();
         persona.setNombres("Juan");
         persona.setApellidoPaterno("Pérez");
         persona.setApellidoMaterno("González");
@@ -38,5 +38,5 @@ public class prueba {
             System.out.println("Error al agregar la persona: " + e.getMessage());
         }
     }
-    
+
 }

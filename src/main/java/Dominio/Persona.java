@@ -142,16 +142,16 @@ public class Persona implements Serializable {
     public void setFechaNacimiento(Calendar fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-    
-    public void agregarLicencia(Licencia licencia){
+
+    public void agregarLicencia(Licencia licencia) {
         this.licencias.add(licencia);
     }
-    
-    public void agregarAutoMovil(Automovil automovil){
+
+    public void agregarAutoMovil(Automovil automovil) {
         this.automoviles.add(automovil);
     }
-    
-    public void agregarPlacas(Placa placa){
+
+    public void agregarPlacas(Placa placa) {
         this.placas.add(placa);
     }
 
@@ -181,8 +181,19 @@ public class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return "Persona{" + "idPersona=" + idPersona + ", nombres=" + nombres + ", apellidoPaterno=" + apellidoPaterno + ", apellidoMaterno=" + apellidoMaterno + ", curp=" + curp + ", rfc=" + rfc + ", telefono=" + telefono + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return "Persona{"
+                + "idPersona=" + idPersona
+                + ", nombres='" + nombres + '\''
+                + ", apellidoPaterno='" + apellidoPaterno + '\''
+                + ", apellidoMaterno='" + apellidoMaterno + '\''
+                + ", curp='" + curp + '\''
+                + ", rfc='" + rfc + '\''
+                + ", telefono='" + telefono + '\''
+                + ", fechaNacimiento=" + fechaNacimiento.getTime()
+                + ", licencias=" + licencias
+                + ", automoviles=" + automoviles
+                + ", placas=" + placas
+                + '}';
     }
-    
     
 }
