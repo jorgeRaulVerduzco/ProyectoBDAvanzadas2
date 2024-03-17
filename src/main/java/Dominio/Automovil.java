@@ -26,6 +26,7 @@ import javax.persistence.Table;
 @Table(name = "automovil")
 public class Automovil implements Serializable {
 //prueba
+
     @Id
     @Column(name = "idAutomovil")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +35,7 @@ public class Automovil implements Serializable {
     @Column(name = "numeroSerie", nullable = false)
     private String numeroSerie;
 
-    @Column(name = "numeroSerie", nullable = false, length = 75)
+    @Column(name = "nombreMarca", nullable = false, length = 75)
     private String marca;
 
     @Column(name = "linea", nullable = false, length = 75)
@@ -122,8 +123,8 @@ public class Automovil implements Serializable {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-    
-    public void agregarPlacas(Placa placa){
+
+    public void agregarPlacas(Placa placa) {
         this.placas.add(placa);
     }
 
@@ -140,5 +141,4 @@ public class Automovil implements Serializable {
         return "Automovil{" + "idAutomovil=" + idAutomovil + ", numeroSerie=" + numeroSerie + ", marca=" + marca + ", linea=" + linea + ", color=" + color + ", modelo=" + modelo + ", persona=" + persona + '}';
     }
 
-    
 }
