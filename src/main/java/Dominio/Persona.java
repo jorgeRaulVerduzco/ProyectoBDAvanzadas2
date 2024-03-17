@@ -53,15 +53,13 @@ public class Persona implements Serializable {
     @Temporal(TemporalType.DATE)
     Calendar fechaNacimiento;
 
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
-    private List<Licencia> licencias;
+    
 
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Automovil> automoviles;
 
-    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
-    private List<Placa> placas;
-
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.PERSIST)
+    private List<Tramite> tramites;
     public Persona() {
     }
 
@@ -73,9 +71,8 @@ public class Persona implements Serializable {
         this.rfc = rfc;
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
-        this.licencias = new ArrayList<>();
         this.automoviles = new ArrayList<>();
-        this.placas = new ArrayList<>();
+        this.tramites = new ArrayList<>();
 
     }
 
@@ -143,25 +140,23 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public void agregarLicencia(Licencia licencia) {
-        this.licencias.add(licencia);
+    public void agregarTramites(Tramite tramite) {
+        this.tramites.add(tramite);
     }
 
     public void agregarAutoMovil(Automovil automovil) {
         this.automoviles.add(automovil);
     }
 
-    public void agregarPlacas(Placa placa) {
-        this.placas.add(placa);
+    public List<Tramite> getTramites() {
+        return tramites;
     }
 
-    public List<Licencia> getLicencias() {
-        return licencias;
+    public void setTramites(List<Tramite> tramites) {
+        this.tramites = tramites;
     }
 
-    public void setLicencias(List<Licencia> licencias) {
-        this.licencias = licencias;
-    }
+  
 
     public List<Automovil> getAutomoviles() {
         return automoviles;
@@ -171,14 +166,7 @@ public class Persona implements Serializable {
         this.automoviles = automoviles;
     }
 
-    public List<Placa> getPlacas() {
-        return placas;
-    }
-
-    public void setPlacas(List<Placa> placas) {
-        this.placas = placas;
-    }
-
+ 
     @Override
     public String toString() {
         return "Persona{"
@@ -190,10 +178,9 @@ public class Persona implements Serializable {
                 + ", rfc='" + rfc + '\''
                 + ", telefono='" + telefono + '\''
                 + ", fechaNacimiento=" + fechaNacimiento.getTime()
-                + ", licencias=" + licencias
                 + ", automoviles=" + automoviles
-                + ", placas=" + placas
+                + ", tramites=" + tramites
                 + '}';
     }
-    
+
 }
