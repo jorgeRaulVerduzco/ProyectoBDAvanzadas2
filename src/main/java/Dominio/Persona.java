@@ -62,6 +62,9 @@ public class Persona implements Serializable {
     @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Placa> placas;
 
+    public Persona() {
+    }
+
     public Persona(String nombres, String apellidoPaterno, String apellidoMaterno, String curp, String rfc, String telefono, Calendar fechaNacimiento) {
         this.nombres = nombres;
         this.apellidoPaterno = apellidoPaterno;

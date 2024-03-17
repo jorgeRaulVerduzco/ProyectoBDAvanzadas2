@@ -42,6 +42,9 @@ public class Licencia implements Serializable {
     @JoinColumn(name = "idPersona")
     private Persona persona;
 
+    public Licencia() {
+    }
+
     public Licencia(int vigencia, TipoLicencia tipoLicencia, Calendar fechaExpedicion, float costo, Persona persona) {
         this.vigencia = vigencia;
         this.tipoLicencia = tipoLicencia;

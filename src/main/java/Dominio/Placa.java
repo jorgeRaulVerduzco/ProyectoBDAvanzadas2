@@ -42,6 +42,9 @@ public class Placa implements Serializable {
     @JoinColumn(name = "idPersona")
     private Persona persona;
 
+    public Placa() {
+    }
+
     public Placa(String digitosPlaca, Calendar fechaTramite, float costo, Automovil automovil, Persona persona) {
         this.digitosPlaca = digitosPlaca;
         this.fechaTramite = fechaTramite;

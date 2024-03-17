@@ -53,6 +53,9 @@ public class Automovil implements Serializable {
     @OneToMany(mappedBy = "automovil", cascade = CascadeType.ALL)
     private List<Placa> placas;
 
+    public Automovil() {
+    }
+
     public Automovil(String numeroSerie, String marca, String linea, String color, String modelo, Persona persona) {
         this.numeroSerie = numeroSerie;
         this.marca = marca;
