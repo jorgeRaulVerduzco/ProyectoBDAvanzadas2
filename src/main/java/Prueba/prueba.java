@@ -37,6 +37,8 @@ public class prueba {
         } catch (PersistenciaException e) {
             System.out.println("Error al agregar la persona: " + e.getMessage());
         }
+        
+        System.out.println("A ver si no explita");
     }
 
 }
