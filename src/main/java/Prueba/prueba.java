@@ -38,7 +38,7 @@ public class prueba {
             System.out.println("Error al agregar la persona: " + e.getMessage());
         }
         
-        System.out.println("A ver si no explita");
+        System.out.println("A ver como es estepedo");
     }
 
 }
